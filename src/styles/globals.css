@@ -1,0 +1,686 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================
+   Touryaari Travels - Luxury Design System
+   Pine & Gold Color Palette
+   ===================================================== */
+
+:root {
+  /* New Luxury Brand Colors - Pine & Gold */
+  --pine: #1B3A2D;
+  --pine-dark: #0F2218;
+  --pine-light: #2A5444;
+  --gold: #C89033;
+  --gold-light: #E8B055;
+  --gold-pale: #F5E6C8;
+  --cream: #FAF7F2;
+  --cream-dark: #F0EAE0;
+  --slate: #1E2A38;
+  --slate-mid: #3A4A5C;
+  --stone: #8A7A6A;
+  --stone-light: #BEB0A0;
+  --white: #FFFFFF;
+  --text-dark: #1A1A1A;
+  --text-mid: #4A4A4A;
+  --text-light: #7A7A7A;
+  
+  /* Legacy colors for backward compatibility */
+  --color-primary: #1B3A2D;
+  --color-primary-light: #2A5444;
+  --color-primary-dark: #0F2218;
+  --color-secondary: #0F2218;
+  --color-accent: #C89033;
+  --color-accent-light: #E8B055;
+  --color-accent-dark: #A07020;
+  --color-orange: #C89033;
+  --color-orange-light: #E8B055;
+  --color-light-bg: #FAF7F2;
+  
+  /* Fonts */
+  --font-serif: var(--font-cormorant), 'Cormorant Garamond', serif;
+  --font-sans: var(--font-dm-sans), 'DM Sans', sans-serif;
+  --font-display: var(--font-cinzel), 'Cinzel', serif;
+  --font-heading: var(--font-cormorant), 'Cormorant Garamond', serif;
+  --font-body: var(--font-dm-sans), 'DM Sans', sans-serif;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 12px rgba(27, 58, 45, 0.08);
+  --shadow-md: 0 8px 32px rgba(27, 58, 45, 0.14);
+  --shadow-lg: 0 20px 60px rgba(27, 58, 45, 0.20);
+  --shadow-card: 0 4px 20px rgba(27, 58, 45, 0.08);
+  --shadow-card-hover: 0 8px 32px rgba(27, 58, 45, 0.14);
+  --shadow-nav: 0 2px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Border Radius */
+  --radius: 4px;
+  --radius-lg: 12px;
+}
+
+/* =====================================================
+   Base Styles
+   ===================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-dark);
+  background-color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--pine-dark);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--gold);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* =====================================================
+   Typography Classes
+   ===================================================== */
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* =====================================================
+   Button Styles
+   ===================================================== */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(26, 58, 107, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 58, 107, 0.4);
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: var(--color-accent);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(42, 159, 214, 0.3);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(42, 159, 214, 0.4);
+  background: var(--color-accent-light);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: white;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-white:hover {
+  background: var(--color-light-bg);
+  transform: translateY(-2px);
+}
+
+.btn-orange {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: var(--color-orange);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-orange:hover {
+  background: var(--color-orange-light);
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   Form Styles
+   ===================================================== */
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  transition: all 0.3s ease;
+  background: white;
+  color: var(--color-primary-dark);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(42, 159, 214, 0.1);
+}
+
+.input-field::placeholder {
+  color: #94a3b8;
+}
+
+.select-field {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  background: white;
+  color: var(--color-primary-dark);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231a3a6b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.select-field:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(42, 159, 214, 0.1);
+}
+
+/* =====================================================
+   Card Styles
+   ===================================================== */
+
+.tour-card {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: all 0.4s ease;
+}
+
+.tour-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.dest-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+}
+
+.dest-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.dest-card:hover img {
+  transform: scale(1.1);
+}
+
+.dest-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13, 34, 68, 0.9) 0%, rgba(13, 34, 68, 0.4) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.dest-card:hover .overlay {
+  background: linear-gradient(to top, rgba(13, 34, 68, 0.95) 0%, rgba(13, 34, 68, 0.6) 60%, rgba(13, 34, 68, 0.3) 100%);
+}
+
+/* =====================================================
+   Badge Styles
+   ===================================================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.badge-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.badge-accent {
+  background: var(--color-accent);
+  color: white;
+}
+
+.badge-orange {
+  background: var(--color-orange);
+  color: white;
+}
+
+.badge-outline {
+  border: 1px solid currentColor;
+  background: transparent;
+}
+
+/* =====================================================
+   Section Styles
+   ===================================================== */
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  max-width: 600px;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(42, 159, 214, 0.1);
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+}
+
+/* =====================================================
+   Container Styles
+   ===================================================== */
+
+.container-custom {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-custom {
+    padding: 0 3rem;
+  }
+}
+
+/* =====================================================
+   Scrollbar Styles
+   ===================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+/* =====================================================
+   Animation Utilities
+   ===================================================== */
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
+   Loading Skeleton
+   ===================================================== */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f1f5f9 25%,
+    #e2e8f0 50%,
+    #f1f5f9 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0.5rem;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* =====================================================
+   Rich Text Editor (Quill) Overrides
+   ===================================================== */
+
+.ql-toolbar {
+  border-color: #e2e8f0 !important;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: #f8fafc;
+}
+
+.ql-container {
+  border-color: #e2e8f0 !important;
+  border-radius: 0 0 0.5rem 0.5rem;
+  font-family: var(--font-body) !important;
+  font-size: 0.9375rem !important;
+}
+
+.ql-editor {
+  min-height: 200px;
+}
+
+/* =====================================================
+   Admin Layout Styles
+   ===================================================== */
+
+.admin-sidebar {
+  background: var(--color-primary-dark);
+  color: white;
+}
+
+.admin-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.admin-sidebar-link:hover,
+.admin-sidebar-link.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* =====================================================
+   WhatsApp Float Button
+   ===================================================== */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 50;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
+/* =====================================================
+   Plan My Trip Floating Button
+   ===================================================== */
+
+.plan-trip-float {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-light) 100%);
+  color: white;
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow: 0 4px 20px rgba(224, 123, 34, 0.4);
+  transition: all 0.3s ease;
+}
+
+.plan-trip-float:hover {
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow: 0 6px 25px rgba(224, 123, 34, 0.5);
+}
+
+/* =====================================================
+   Responsive Utilities
+   ===================================================== */
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .btn-white,
+  .btn-orange {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* =====================================================
+   Animations & Keyframes
+   ===================================================== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease both;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.animate-fade-up-delay-3 {
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+/* Scroll Reveal Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================================
+   Print Styles
+   ===================================================== */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
