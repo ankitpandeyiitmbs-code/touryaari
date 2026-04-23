@@ -27,7 +27,7 @@ export default function AdminHeader({ email }: AdminHeaderProps) {
     <header className="bg-pine-dark text-white sticky top-0 z-50 border-b border-gold/20">
       <div className="flex items-center justify-between px-6 py-4">
         <Link href="/admin" className="flex items-center gap-2">
-          <img src="https://i.ibb.co/HLJJ976C/T-1-1-Photoroom.png" alt="Touryaari" className="h-24 w-auto object-contain" width="96" height="96" />
+          <img src="https://i.ibb.co/HLJJ976C/T-1-1-Photoroom.png" alt="Touryaari" className="h-48 w-auto object-contain" width="192" height="192" />
           <span className="font-serif text-xl font-bold text-white">
             Touryaari <span className="text-gold">Admin</span>
           </span>

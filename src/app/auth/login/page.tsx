@@ -80,7 +80,7 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="text-center mb-8 pt-8">
           <Link href="/" className="inline-flex items-center gap-2.5">
-            <img src="https://i.ibb.co/HLJJ976C/T-1-1-Photoroom.png" alt="Touryaari" className="h-40 w-auto object-contain" width="160" height="160" />
+            <img src="https://i.ibb.co/HLJJ976C/T-1-1-Photoroom.png" alt="Touryaari" className="h-80 w-auto object-contain" width="320" height="320" />
             <span className="font-display text-xl font-semibold text-pine-dark tracking-wide">
               Touryaari<span className="text-gold">Travels</span>
             </span>
