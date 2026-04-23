@@ -86,9 +86,7 @@ export default function RegisterPage() {
       <div className="max-w-md w-full">
         <div className="text-center mb-8 pt-8">
           <Link href="/" className="inline-flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center font-display text-[17px] font-semibold text-pine-dark">
-              T
-            </div>
+            <img src="https://i.ibb.co/HLJJ976C/T-1-1-Photoroom.png" alt="Touryaari" className="h-80 w-auto object-contain" width="320" height="320" />
             <span className="font-display text-xl font-semibold text-pine-dark tracking-wide">
               Touryaari<span className="text-gold">Travels</span>
             </span>
