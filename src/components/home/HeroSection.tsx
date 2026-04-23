@@ -64,7 +64,19 @@ export default function HeroSection() {
         .order('sort_order', { ascending: true });
       
       if (data && data.length > 0) {
-        setSlides(data);
+        // Map database fields to component fields
+        const mappedSlides = data.map(slide => ({
+          id: slide.id,
+          image_url: slide.image_url,
+          eyebrow: slide.badge_text || 'Featured',
+          title: slide.title || 'Explore',
+          subtitle: slide.subtitle || '',
+          cta1_text: slide.cta_text || 'Explore Tours',
+          cta1_link: slide.cta_link || '/tours',
+          cta2_text: 'Contact Us',
+          cta2_link: '/contact',
+        }));
+        setSlides(mappedSlides);
       }
     };
     fetchSlides();
