@@ -92,10 +92,12 @@ export default function BookingForm({ tour }: BookingFormProps) {
   const initiatePayment = async (data: BookingFormData) => {
     setIsProcessing(true);
     try {
+      console.log('Starting payment process...');
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
 
       // 1. Create a booking record via API
+      console.log('Creating booking...');
       const bookingRes = await fetch('/api/bookings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -123,16 +125,20 @@ export default function BookingForm({ tour }: BookingFormProps) {
         }),
       });
       const bookingData = await bookingRes.json();
+      console.log('Booking response:', bookingData);
 
       if (!bookingData.booking) {
+        console.error('Booking creation failed:', bookingData);
         toast.error('Failed to create booking. Please try again.');
         setIsProcessing(false);
         return;
       }
 
       const booking = bookingData.booking;
+      console.log('Booking created:', booking);
 
       // 2. Create Razorpay order
+      console.log('Creating Razorpay order...');
       const orderRes = await fetch('/api/razorpay/order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -143,15 +149,19 @@ export default function BookingForm({ tour }: BookingFormProps) {
         }),
       });
       const orderData = await orderRes.json();
+      console.log('Order response:', orderData);
 
       if (!orderData.success) {
+        console.error('Order creation failed:', orderData);
         toast.error('Failed to initiate payment. Please try again.');
         setIsProcessing(false);
         return;
       }
 
       // 3. Load and open Razorpay checkout
+      console.log('Loading Razorpay script...');
       const loaded = await loadRazorpayScript();
+      console.log('Razorpay script loaded:', loaded);
       if (!loaded) {
         toast.error('Payment gateway unavailable. Please try again.');
         setIsProcessing(false);
@@ -172,6 +182,7 @@ export default function BookingForm({ tour }: BookingFormProps) {
         },
         theme: { color: '#C89033' },
         handler: async (response) => {
+          console.log('Payment successful:', response);
           // 4. Verify payment
           const verifyRes = await fetch('/api/razorpay/verify', {
             method: 'POST',
@@ -184,6 +195,7 @@ export default function BookingForm({ tour }: BookingFormProps) {
             }),
           });
           const verifyData = await verifyRes.json();
+          console.log('Verification response:', verifyData);
 
           if (verifyData.success) {
             setBookingComplete(true);
@@ -195,12 +207,14 @@ export default function BookingForm({ tour }: BookingFormProps) {
         },
         modal: {
           ondismiss: () => {
+            console.log('Payment modal dismissed');
             toast('Payment cancelled. Your booking is saved as pending.', { icon: 'ℹ️' });
             setIsProcessing(false);
           },
         },
       };
 
+      console.log('Opening Razorpay modal with key:', process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID);
       const rzp = new window.Razorpay(options);
       rzp.open();
     } catch (err) {
