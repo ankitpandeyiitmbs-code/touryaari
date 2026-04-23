@@ -109,7 +109,7 @@ export default function Navbar() {
           {/* Logo - Luxury Design */}
           <Link href="/" className="flex items-center gap-2.5 no-underline">
             {settings.logo_url ? (
-              <Image src={settings.logo_url} alt={settings.site_name} width={120} height={120} className="h-12 w-auto object-contain" quality={95} />
+              <Image src={settings.logo_url} alt={settings.site_name} width={160} height={160} className="h-16 w-auto object-contain" quality={95} />
             ) : (
               <div className="w-9 h-9 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center font-display text-[15px] font-semibold text-pine-dark">
                 {settings.site_name.charAt(0)}
@@ -273,7 +273,7 @@ export default function Navbar() {
               <div className="flex justify-between items-center mb-8">
                 <Link href="/" className="flex items-center gap-2.5" onClick={() => setIsMobileMenuOpen(false)}>
                   {settings.logo_url ? (
-                    <Image src={settings.logo_url} alt={settings.site_name} width={120} height={120} className="h-12 w-auto object-contain" quality={95} />
+                    <Image src={settings.logo_url} alt={settings.site_name} width={160} height={160} className="h-16 w-auto object-contain" quality={95} />
                   ) : (
                     <div className="w-9 h-9 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center font-cinzel text-[15px] font-semibold text-pine-dark">
                       {settings.site_name.charAt(0)}

@@ -978,7 +978,7 @@ export const defaultSettings: Partial<SiteSettings> = {
   // Branding
   site_name: 'Touryaari Travels',
   tagline: 'Your Journey, Our Passion',
-  logo_url: 'https://i.ibb.co/S48cvCy6/T-1-1.png',
+  logo_url: 'https://i.ibb.co/HLJJ976C/T-1-1-Photoroom.png',
   favicon_url: '/favicon.ico',
   // Hero
   hero_title: 'Explore Incredible India',

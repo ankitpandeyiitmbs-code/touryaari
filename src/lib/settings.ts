@@ -106,7 +106,7 @@ export interface SiteSettings {
 // Default settings as fallback when DB is unavailable
 export const defaultSettings: Partial<SiteSettings> = {
   site_name: 'Touryaari Travels',
-  logo_url: 'https://i.ibb.co/S48cvCy6/T-1-1.png',
+  logo_url: 'https://i.ibb.co/HLJJ976C/T-1-1-Photoroom.png',
   tagline: 'Explore India Your Way',
   hero_title: "Discover India's Hidden Wonders",
   hero_subtitle: 'Handcrafted tours for the curious traveler',

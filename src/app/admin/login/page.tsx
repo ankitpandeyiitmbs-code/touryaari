@@ -43,7 +43,7 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-cream flex items-center justify-center p-4">
       <div className="bg-white rounded-xl shadow-card border border-cream-dark p-8 w-full max-w-md">
         <div className="text-center mb-8">
-          <img src="https://i.ibb.co/S48cvCy6/T-1-1.png" alt="Touryaari" className="h-24 w-auto object-contain mx-auto mb-4" width="96" height="96" />
+          <img src="https://i.ibb.co/HLJJ976C/T-1-1-Photoroom.png" alt="Touryaari" className="h-28 w-auto object-contain mx-auto mb-4" width="112" height="112" />
           <h1 className="font-serif text-2xl font-bold text-pine-dark mb-2">
             Touryaari Admin
           </h1>

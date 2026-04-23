@@ -1538,6 +1538,9 @@ video {
 .h-px {
   height: 1px;
 }
+.h-28 {
+  height: 7rem;
+}
 .max-h-0 {
   max-height: 0px;
 }
