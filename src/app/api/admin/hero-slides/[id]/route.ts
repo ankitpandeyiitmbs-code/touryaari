@@ -11,9 +11,10 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
       .from('hero_slides')
       .select('*')
       .eq('id', params.id)
-      .single();
+      .maybeSingle();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    if (!data) return NextResponse.json({ error: 'Slide not found' }, { status: 404 });
     return NextResponse.json({ slide: data });
   } catch (error) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
@@ -32,9 +33,10 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
       .update(body)
       .eq('id', params.id)
       .select()
-      .single();
+      .maybeSingle();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    if (!data) return NextResponse.json({ error: 'Slide not found' }, { status: 404 });
     return NextResponse.json({ slide: data });
   } catch (error) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
