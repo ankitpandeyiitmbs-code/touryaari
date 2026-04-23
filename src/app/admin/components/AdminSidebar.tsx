@@ -42,7 +42,7 @@ export default function AdminSidebar() {
     href === '/admin' ? pathname === '/admin' : !!pathname?.startsWith(href);
 
   return (
-    <aside className="w-64 bg-[#2D5A3D] text-white min-h-[calc(100vh-64px)] border-r border-gold/10 overflow-y-auto flex-shrink-0">
+    <aside className="w-64 bg-[#4A7C59] text-white min-h-[calc(100vh-64px)] border-r border-gold/10 overflow-y-auto flex-shrink-0">
       <nav className="p-4 space-y-1">
         {mainNavItems.map((item) => (
           <Link
