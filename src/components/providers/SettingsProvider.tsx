@@ -41,7 +41,7 @@ interface SiteSettings {
 
 const defaultSettings: SiteSettings = {
   site_name: 'Touryaari Travels',
-  logo_url: 'https://i.ibb.co/QjY2c5Hm/T-1.png',
+  logo_url: 'https://i.ibb.co/S48cvCy6/T-1-1.png',
   tagline: 'Your Journey, Our Passion',
   phone_primary: '+91 85956 89569',
   phone_secondary: '',

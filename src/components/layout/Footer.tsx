@@ -34,7 +34,7 @@ export default async function Footer() {
   const settings = await getSiteSettings();
   const s = settings || {
     site_name: 'Touryaari Travels',
-    logo_url: 'https://i.ibb.co/QjY2c5Hm/T-1.png',
+    logo_url: 'https://i.ibb.co/S48cvCy6/T-1-1.png',
     facebook_url: '',
     instagram_url: '',
     youtube_url: '',

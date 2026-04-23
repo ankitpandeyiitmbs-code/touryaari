@@ -320,14 +320,14 @@ export default async function TourPage({ params }: TourPageProps) {
                 <h3 className="font-serif font-semibold text-pine-dark mb-4">Need Help?</h3>
                 <div className="space-y-3">
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+918595689569"
                     className="w-full inline-flex items-center justify-center gap-2 border border-cream-dark text-pine-dark font-medium py-2.5 rounded-lg hover:border-gold hover:bg-gold/5 transition-colors"
                   >
                     <Phone className="w-4 h-4" />
                     Call Us
                   </a>
                   <a
-                    href={`https://wa.me/919876543210?text=Hi! I'm interested in the tour: ${tour.title}`}
+                    href={`https://wa.me/918595689569?text=Hi! I'm interested in the tour: ${tour.title}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center gap-2 bg-pine-dark text-white font-medium py-2.5 rounded-lg hover:bg-pine transition-colors"
