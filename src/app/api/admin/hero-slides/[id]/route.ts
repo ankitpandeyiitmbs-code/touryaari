@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
+import { createServiceClient } from '@/lib/supabase/server';
 import { requireAdminApi } from '@/lib/admin-auth';
 
 export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
   const authError = await requireAdminApi();
   if (authError) return authError;
   try {
-    const supabase = createClient();
+    const supabase = createServiceClient();
     const { data, error } = await supabase
       .from('hero_slides')
       .select('*')
@@ -26,7 +26,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   if (authError) return authError;
   try {
     const body = await request.json();
-    const supabase = createClient();
+    const supabase = createServiceClient();
     
     // Remove id from body if present to avoid conflicts
     const { id, ...updateData } = body;
@@ -71,7 +71,7 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
   const authError = await requireAdminApi();
   if (authError) return authError;
   try {
-    const supabase = createClient();
+    const supabase = createServiceClient();
     const { error } = await supabase.from('hero_slides').delete().eq('id', params.id);
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
