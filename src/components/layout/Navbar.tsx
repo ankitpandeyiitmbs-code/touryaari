@@ -102,7 +102,7 @@ export default function Navbar() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-[#0F2218] shadow-[0_1px_0_rgba(200,144,51,0.2)] transition-all duration-400"
+      className="fixed top-0 left-0 right-0 z-50 bg-[#2D5A3D] shadow-[0_1px_0_rgba(200,144,51,0.2)] transition-all duration-400"
     >
       <div className="container-custom">
         <nav className="flex items-center justify-between h-20">
@@ -267,7 +267,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed inset-0 top-0 bg-pine-dark z-50 lg:hidden"
+            className="fixed inset-0 top-0 bg-[#2D5A3D] z-50 lg:hidden"
           >
             <div className="flex flex-col h-full p-6">
               <div className="flex justify-between items-center mb-8">
