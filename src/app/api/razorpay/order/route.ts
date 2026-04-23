@@ -5,11 +5,14 @@ import Razorpay from 'razorpay';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    console.log('Razorpay order request:', body);
     const { amount, currency = 'INR', booking_id, booking_type = 'tour' } = body;
 
     // Check if Razorpay credentials are configured
     if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
       console.error('Razorpay credentials not configured');
+      console.error('RAZORPAY_KEY_ID:', process.env.RAZORPAY_KEY_ID ? 'SET' : 'NOT SET');
+      console.error('RAZORPAY_KEY_SECRET:', process.env.RAZORPAY_KEY_SECRET ? 'SET' : 'NOT SET');
       
       // For demo/dev: create a mock order and mark booking as confirmed
       const supabase = createServiceClient();
@@ -35,6 +38,7 @@ export async function POST(request: Request) {
       });
     }
 
+    console.log('Creating Razorpay order with key:', process.env.RAZORPAY_KEY_ID);
     const razorpay = new Razorpay({
       key_id: process.env.RAZORPAY_KEY_ID,
       key_secret: process.env.RAZORPAY_KEY_SECRET,
@@ -50,7 +54,9 @@ export async function POST(request: Request) {
       },
     };
 
+    console.log('Razorpay options:', options);
     const order = await razorpay.orders.create(options);
+    console.log('Razorpay order created:', order);
 
     return NextResponse.json({
       success: true,
