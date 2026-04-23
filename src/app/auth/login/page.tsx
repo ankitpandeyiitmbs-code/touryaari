@@ -75,10 +75,10 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cream py-12 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-cream pt-20 pb-12 px-4">
       <div className="max-w-md w-full">
         {/* Logo */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 pt-8">
           <Link href="/" className="inline-flex items-center gap-2.5">
             <img src="https://i.ibb.co/QjY2c5Hm/T-1.png" alt="Touryaari" className="h-16 w-auto object-contain" width="64" height="64" />
             <span className="font-display text-xl font-semibold text-pine-dark tracking-wide">

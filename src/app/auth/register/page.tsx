@@ -82,9 +82,9 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cream py-12 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-cream pt-20 pb-12 px-4">
       <div className="max-w-md w-full">
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 pt-8">
           <Link href="/" className="inline-flex items-center gap-2.5">
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center font-display text-[17px] font-semibold text-pine-dark">
               T
