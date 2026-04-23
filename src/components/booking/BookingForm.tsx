@@ -114,7 +114,6 @@ export default function BookingForm({ tour }: BookingFormProps) {
           adults: data.adults,
           children: data.children,
           sharing_type: data.sharing_type,
-          subtotal,
           gst_amount: gstAmount,
           total_amount: totalAmount,
           advance_amount: advanceAmount,
