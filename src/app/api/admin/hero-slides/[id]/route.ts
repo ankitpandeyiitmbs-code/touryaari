@@ -28,9 +28,12 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     const body = await request.json();
     const supabase = createClient();
     
+    // Remove id from body if present to avoid conflicts
+    const { id, ...updateData } = body;
+    
     const { data, error } = await supabase
       .from('hero_slides')
-      .update(body)
+      .update(updateData)
       .eq('id', params.id)
       .select()
       .maybeSingle();
