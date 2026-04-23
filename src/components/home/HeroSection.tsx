@@ -56,27 +56,36 @@ export default function HeroSection() {
 
   useEffect(() => {
     const fetchSlides = async () => {
-      const supabase = createClient();
-      const { data } = await supabase
-        .from('hero_slides')
-        .select('*')
-        .eq('is_active', true)
-        .order('sort_order', { ascending: true });
-      
-      if (data && data.length > 0) {
-        // Map database fields to component fields
-        const mappedSlides = data.map(slide => ({
-          id: slide.id,
-          image_url: slide.image_url,
-          eyebrow: slide.badge_text || 'Featured',
-          title: slide.title || 'Explore',
-          subtitle: slide.subtitle || '',
-          cta1_text: slide.cta_text || 'Explore Tours',
-          cta1_link: slide.cta_link || '/tours',
-          cta2_text: 'Contact Us',
-          cta2_link: '/contact',
-        }));
-        setSlides(mappedSlides);
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from('hero_slides')
+          .select('*')
+          .eq('is_active', true)
+          .order('sort_order', { ascending: true });
+        
+        console.log('Hero slides fetch:', { data, error });
+        
+        if (data && data.length > 0) {
+          // Map database fields to component fields
+          const mappedSlides = data.map(slide => ({
+            id: slide.id,
+            image_url: slide.image_url,
+            eyebrow: slide.badge_text || 'Featured',
+            title: slide.title || 'Explore',
+            subtitle: slide.subtitle || '',
+            cta1_text: slide.cta_text || 'Explore Tours',
+            cta1_link: slide.cta_link || '/tours',
+            cta2_text: 'Contact Us',
+            cta2_link: '/contact',
+          }));
+          console.log('Mapped slides:', mappedSlides);
+          setSlides(mappedSlides);
+        } else {
+          console.log('No slides found, using defaults');
+        }
+      } catch (err) {
+        console.error('Error fetching hero slides:', err);
       }
     };
     fetchSlides();
