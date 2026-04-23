@@ -95,10 +95,11 @@ export default function BookingForm({ tour }: BookingFormProps) {
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
 
-      // 1. Create a booking record
-      const { data: booking, error: bookingError } = await supabase
-        .from('bookings')
-        .insert([{
+      // 1. Create a booking record via API
+      const bookingRes = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           tour_id: tour.id,
           tour_title: tour.title,
           tour_slug: tour.slug,
@@ -119,15 +120,17 @@ export default function BookingForm({ tour }: BookingFormProps) {
           special_requests: data.special_requests || null,
           status: 'pending',
           payment_status: 'unpaid',
-        }])
-        .select()
-        .single();
+        }),
+      });
+      const bookingData = await bookingRes.json();
 
-      if (bookingError || !booking) {
+      if (!bookingData.booking) {
         toast.error('Failed to create booking. Please try again.');
         setIsProcessing(false);
         return;
       }
+
+      const booking = bookingData.booking;
 
       // 2. Create Razorpay order
       const orderRes = await fetch('/api/razorpay/order', {
