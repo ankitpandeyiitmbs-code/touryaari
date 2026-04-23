@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
+import { createServiceClient } from '@/lib/supabase/server';
 import Razorpay from 'razorpay';
 
 export async function POST(request: Request) {
@@ -12,7 +12,7 @@ export async function POST(request: Request) {
       console.error('Razorpay credentials not configured');
       
       // For demo/dev: create a mock order and mark booking as confirmed
-      const supabase = createClient();
+      const supabase = createServiceClient();
       const table = booking_type === 'transport' ? 'transport_bookings' : 'bookings';
       
       await supabase

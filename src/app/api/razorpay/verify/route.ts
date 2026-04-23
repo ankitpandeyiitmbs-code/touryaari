@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
+import { createServiceClient } from '@/lib/supabase/server';
 import { sendBookingConfirmationEmail } from '@/lib/email';
 import crypto from 'crypto';
 
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const supabase = createClient();
+    const supabase = createServiceClient();
 
     // Handle different booking types
     if (booking_type === 'transport') {
