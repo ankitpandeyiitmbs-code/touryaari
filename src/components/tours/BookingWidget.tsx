@@ -1,14 +1,42 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { formatPrice, formatDuration } from '@/lib/utils';
 import { Tour } from '@/types';
+import { createClient } from '@/lib/supabase/client';
 
 interface BookingWidgetProps {
   tour: Tour;
 }
 
 export default function BookingWidget({ tour }: BookingWidgetProps) {
+  const [hasBooking, setHasBooking] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkBooking = async () => {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user) {
+        setLoading(false);
+        return;
+      }
+
+      const { data } = await supabase
+        .from('bookings')
+        .select('id')
+        .eq('tour_id', tour.id)
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      setHasBooking(!!data);
+      setLoading(false);
+    };
+    checkBooking();
+  }, [tour.id]);
+
   const lowestPrice = Math.min(
     tour.price_single,
     tour.price_double || tour.price_single,
@@ -48,12 +76,23 @@ export default function BookingWidget({ tour }: BookingWidgetProps) {
         </div>
       </div>
 
-      <Link
-        href={`/tour/${tour.slug}/book`}
-        className="w-full inline-flex items-center justify-center bg-gold text-pine-dark font-semibold tracking-wide py-3 rounded-lg hover:bg-gold-light transition-colors mb-3"
-      >
-        Book Now
-      </Link>
+      {loading ? (
+        <div className="w-full py-3 text-center text-stone">Loading...</div>
+      ) : hasBooking ? (
+        <Link
+          href="/account/bookings"
+          className="w-full inline-flex items-center justify-center bg-green-600 text-white font-semibold tracking-wide py-3 rounded-lg hover:bg-green-700 transition-colors mb-3"
+        >
+          View Your Booking
+        </Link>
+      ) : (
+        <Link
+          href={`/tour/${tour.slug}/book`}
+          className="w-full inline-flex items-center justify-center bg-gold text-pine-dark font-semibold tracking-wide py-3 rounded-lg hover:bg-gold-light transition-colors mb-3"
+        >
+          Book Now
+        </Link>
+      )}
 
       <p className="text-center text-xs text-stone">
         Only 30% advance payment required
