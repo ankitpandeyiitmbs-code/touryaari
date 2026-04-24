@@ -100,9 +100,9 @@ export async function POST(request: Request) {
         try {
           await sendBookingConfirmationEmail({
             booking_id: booking.id,
-            customer_name: booking.customer_name || booking.name || 'Traveller',
-            customer_email: booking.customer_email || booking.email || '',
-            customer_phone: booking.customer_phone || booking.phone || '',
+            customer_name: booking.customer_name || 'Traveller',
+            customer_email: booking.customer_email || '',
+            customer_phone: booking.customer_phone || '',
             tour_title: booking.tours?.title || 'Tour',
             tour_destination: booking.tours?.destination || '',
             travel_date: booking.travel_date
@@ -110,8 +110,8 @@ export async function POST(request: Request) {
                   day: 'numeric', month: 'long', year: 'numeric',
                 })
               : 'TBD',
-            num_travelers: booking.num_travelers || booking.travelers || 1,
-            total_amount: booking.total_amount || booking.amount || 0,
+            num_travelers: (booking.adults || 1) + (booking.children || 0),
+            total_amount: booking.advance_amount || 0,
             payment_id: razorpay_payment_id,
             order_id: razorpay_order_id,
           });

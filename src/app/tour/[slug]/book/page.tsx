@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import Script from 'next/script';
 import { createClient } from '@/lib/supabase/client';
 import { Tour } from '@/types';
 import BookingForm from '@/components/booking/BookingForm';
@@ -133,6 +134,10 @@ export default function BookingPage() {
           </div>
         </div>
       </div>
+      <Script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        strategy="beforeInteractive"
+      />
     </div>
   );
 }

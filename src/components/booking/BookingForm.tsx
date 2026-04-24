@@ -197,8 +197,8 @@ export default function BookingForm({ tour }: BookingFormProps) {
           console.log('Verification response:', verifyData);
 
           if (verifyData.success) {
-            setBookingComplete(true);
             toast.success('Booking confirmed! 🎉');
+            router.push(`/booking/success?id=${booking.id}&ref=${booking.booking_reference || booking.booking_ref || ''}`);
           } else {
             toast.error('Payment verification failed. Contact support.');
           }
@@ -215,6 +215,12 @@ export default function BookingForm({ tour }: BookingFormProps) {
 
       console.log('Opening Razorpay modal with key:', process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID);
       const rzp = new window.Razorpay(options);
+      rzp.on('payment.failed', function (response: any) {
+        console.error('Payment failed:', response.error);
+        toast.error(`Payment failed: ${response.error?.description || 'Please try again.'}`);
+        router.push(`/booking/failed?id=${booking.id}`);
+        setIsProcessing(false);
+      });
       rzp.open();
     } catch (err) {
       console.error('Booking error:', err);
