@@ -157,15 +157,6 @@ export default function BookingForm({ tour }: BookingFormProps) {
         return;
       }
 
-      // If demo mode, skip Razorpay modal and show success
-      if (orderData.demo) {
-        console.log('Demo mode: Skipping Razorpay modal');
-        setBookingComplete(true);
-        toast.success('Booking confirmed! 🎉');
-        setIsProcessing(false);
-        return;
-      }
-
       // 3. Load and open Razorpay checkout
       console.log('Loading Razorpay script...');
       const loaded = await loadRazorpayScript();

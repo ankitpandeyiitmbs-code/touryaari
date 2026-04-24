@@ -1,8 +1,10 @@
 -- Drop existing RLS policies on bookings table
 DROP POLICY IF EXISTS "Users can view own bookings" ON public.bookings;
 DROP POLICY IF EXISTS "Users can insert own bookings" ON public.bookings;
+DROP POLICY IF EXISTS "Users can insert bookings" ON public.bookings;
 DROP POLICY IF EXISTS "Users can update own bookings" ON public.bookings;
 DROP POLICY IF EXISTS "Service role can manage bookings" ON public.bookings;
+DROP POLICY IF EXISTS "Service role full access" ON public.bookings;
 
 -- Create new RLS policies
 -- Allow service role to do everything
